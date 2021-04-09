@@ -9,6 +9,8 @@ class Product extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name'];
+
     public function photos(){
         return $this->morphMany('App\Models\Photo', 'imageable');
     }

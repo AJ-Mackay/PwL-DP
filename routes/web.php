@@ -46,3 +46,20 @@ Route::get('/delete', function () {
 
     $staff->photos()->whereId(2)->delete();
 });
+
+Route::get('/assign', function () {
+    $staff = Staff::findOrFail(2);
+
+    $photo = Photo::findOrFail(2);
+
+    $staff->photos()->save($photo);
+});
+
+Route::get('/unassign', function () {
+    $staff = Staff::findOrFail(2);
+
+    // will not allow 'imageable_id' or 'imageable_type' to be left blank
+    //$staff->photos()->whereId(2)->update(['imageable_id'=>'', 'imageable_type'=>'']);
+    // 'imageable_id' must be provided with an integer
+    $staff->photos()->whereId(2)->update(['imageable_id'=>'1', 'imageable_type'=>'']);
+});
