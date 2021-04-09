@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Staff;
+use App\Models\Photo;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +17,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/create', function () {
+    $staff = Staff::find(1);
+
+    $staff->photos()->create(['path'=>'example.jpg']);
 });
