@@ -40,3 +40,9 @@ Route::get('/update', function () {
     $photo->path = "newImage.jpg";
     $photo->save();
 });
+
+Route::get('/delete', function () {
+    $staff = Staff::findOrFail(1);
+
+    $staff->photos()->whereId(2)->delete();
+});
